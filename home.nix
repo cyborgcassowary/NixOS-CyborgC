@@ -86,7 +86,7 @@
   };
 
   home.file.".config/nvim" = {
-  	source = ${config.home.homeDirectory}/.dotfiles/nvim/init.lua;
+  	source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/nvim/init.lua";
 	recursive = true;
   };
 
