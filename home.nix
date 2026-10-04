@@ -82,9 +82,13 @@
 	vimAlias = true;
   };
 
-  home.file = {
-  	"~/.config/nvim/init.lua".source = ./nvim/init.lua;
+  home.file.".config/nvim" = {
+  	source = ~/.dotfiles/nvim/init.lua;
+	recursive = true;
   };
+
+# home.file.".config/app".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/src/dotfiles/app";
+
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
