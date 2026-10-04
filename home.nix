@@ -86,7 +86,7 @@
   };
 
   home.file.".config/nvim" = {
-  	source = nvim/init.lua;
+  	source = ${config.home.homeDirectory}/.dotfiles/nvim/init.lua;
 	recursive = true;
   };
 
