@@ -126,7 +126,10 @@
     remotePlay.openFirewall = true; # Open ports for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports for Source Dedicated Server
   };
-  
+ # appimages
+# programs.appimage = {
+#     enable = true;
+# }
 
   #programs.keepassxc = {
   #  enable = true;

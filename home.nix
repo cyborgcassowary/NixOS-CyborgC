@@ -71,6 +71,13 @@
     # EDITOR = "emacs";
   };
 
+  programs.bash = {
+  	enable = true;
+	shellAliases = {
+		"vim" = "nvim";		
+	};
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
