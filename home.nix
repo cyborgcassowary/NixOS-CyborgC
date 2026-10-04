@@ -74,12 +74,16 @@
   programs.bash = {
   	enable = true;
 	shellAliases = {
-		"vim" = "nvim";		
+
 	};
   };
 
   programs.neovim = {
 	vimAlias = true;
+  };
+
+  home.file = {
+  	"~/.config/nvim/init.lua".source = ./nvim/init.lua;
   };
 
   # Let Home Manager install and manage itself.
