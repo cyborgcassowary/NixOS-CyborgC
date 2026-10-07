@@ -1,1 +1,1 @@
-vim.cmd("colorscheme morning")
+vim.cmd.colorscheme("retrobox")

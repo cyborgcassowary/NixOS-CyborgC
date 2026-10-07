@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -17,10 +17,10 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-    pkgs.hello
+    hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -34,10 +34,10 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    (pkgs.writeShellScriptBin "my-config-test" ''
-      echo "${config.home.homeDirectory}"
-    '')
+
+    daggerfall-unity
   ];
+
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -85,10 +85,8 @@
 	vimAlias = true;
   };
 
-  home.file.".config/nvim/init.lua" = {
-  	#source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/nvim/init.lua";
-	#recursive = true;
-	source = ./nvim/init.lua;
+  home.file.".config/nvim" = {
+  	source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/nvim/init.lua";
 	recursive = true;
   };
 
