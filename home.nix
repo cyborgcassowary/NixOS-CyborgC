@@ -35,6 +35,11 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     daggerfall-unity
+
+    (pkgs.writeShellScriptBin "daggerfall-unity" ''
+       export SDL_VIDEODRIVER=x11
+       exec "$HOME/Games/DaggerfallUnity/DaggerfallUnity.x86_64" "$@"
+    '')
   ];
 
 
