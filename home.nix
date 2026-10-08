@@ -34,7 +34,6 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-
     daggerfall-unity
   ];
 
@@ -70,6 +69,7 @@
   #
   #  /etc/profiles/per-user/cyborgc/etc/profile.d/hm-session-vars.sh
   #
+
   home.sessionVariables = {
     # EDITOR = "emacs";
   };

@@ -126,6 +126,11 @@
     remotePlay.openFirewall = true; # Open ports for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports for Source Dedicated Server
   };
+  
+  #
+  # nix-ld is needed for Daggerfall Unity
+  #
+  programs.nix-ld.enable = true;
  # appimages
 # programs.appimage = {
 #     enable = true;
