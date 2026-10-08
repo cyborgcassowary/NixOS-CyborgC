@@ -130,7 +130,10 @@
   #
   # nix-ld is needed for Daggerfall Unity
   #
-  programs.nix-ld.enable = true;
+  programs.nix-ld = { 
+     enable = true;
+     libraries = pkgs.steam-run.args.multiPkgs pkgs;
+  };
  # appimages
 # programs.appimage = {
 #     enable = true;
