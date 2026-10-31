@@ -116,6 +116,8 @@
      curl
      keepassxc
      git
+     steam-run-free
+     appimage-run
      # applications
      steam
   ];
