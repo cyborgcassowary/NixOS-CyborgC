@@ -86,6 +86,13 @@
 	};
   };
 
+
+  programs.obsidian = {
+  	enable = true;
+
+  };
+
+
   programs.neovim = {
 	vimAlias = true;
   };
