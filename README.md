@@ -12,3 +12,19 @@ My ultimate goal for my NixOS system is quickly entering and changing from very 
 - Testing 
 
 However, I might look into [MyNixOS](https://mynixos.com) to discover premade NixOS images or ideas. MyNixOS has been extremely helpful so far.
+
+### Important commands
+
+```
+
+nix flake update
+
+nixos-rebuild switch --flake .
+
+home-manager switch --flake .
+
+home-manager generations
+
+
+```
+
