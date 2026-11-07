@@ -119,6 +119,7 @@
      git
      steam-run-free
      appimage-run
+     renoise
      # applications
      steam
   ];
