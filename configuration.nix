@@ -8,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-     # <home-manager/nixos>
     ];
 
   # Bootloader.
@@ -62,6 +61,9 @@
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
 
+  # realtime priority for pro audio.
+  security.rtkit.enable = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -88,13 +90,35 @@
   users.users."cyborgc" = {
     isNormalUser = true;
     description = "Cyborg Cassowary";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" ]; # user now added to audio group
     packages = with pkgs; [
       kdePackages.kate
       thunderbird
     ];
   };
 
+  # add necessary audio configs to limits.conf
+
+  security.pam.loginLimits = [
+    {
+      domain = "@audio";
+      item   = "rtprio";
+      type   = "-";
+      value  = "95";
+    }
+    {
+      domain = "@audio";
+      item   = "memlock";
+      type   = "-";
+      value  = "unlimited";
+    }
+    {
+      domain = "@audio";
+      item   = "nice";
+      type   = "-";
+      value  = "-10";
+    }
+  ];
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -119,7 +143,7 @@
      git
      steam-run-free
      appimage-run
-     renoise
+
      # applications
      steam
   ];
@@ -148,22 +172,6 @@
       obs-vaapi
     ];
   };
- # appimages
-# programs.appimage = {
-#     enable = true;
-# }
-
-  #programs.keepassxc = {
-  #  enable = true;
-  #  autostart = true;
-  #  settings = {
-  #    # Enable Secret Service Integration to allow apps to query your kdbx vault
-  #    FdoSecrets.Enabled = true;
-  #    Browser = {
-  #      Enabled = true;
-  #    };
-  #  };
-  #};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
